@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User - Dashboard</title>
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/datepicker3.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!--Icons-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://code.angularjs.org/1.3.15/angular.js"></script>
+    <script src="angular/sensors.js"></script>
+    <script src="javascripts/respond.min.js"></script>
+
+</head>
+
+<body ng-app="Sensors">
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span>Sensor Admin </span>Dashboard</a>
+            <a class="navbar-brand" style="float:right;" href="/logoutAdmin">Logout</a>
+        </div>
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <form role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+    </form>
+    <ul class="nav menu">
+        <li class="active"><a href="userDashboard.ejs"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+
+    </ul>
+
+
+</div><!--/.sidebar-->
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+            <li class="active">Icons</li>
+        </ol>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+    </div><!--/.row-->
+
+    <div class="dashboard">
+        <div class="row">
+
+            <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal">
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-orange panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
+                        </div>
+                        <div class="col-sm-9 col-lg-7 widget-right">
+                            <div class="large">Add</div>
+                            <div style="font-size: medium;">Sensors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+
+            <div class="modal fade" id="myModal" role="dialog" ng-controller="addSensor">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <form class="form-horizontal" role="form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add sensor details : </h4>
+                        </div>
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label"
+                                            for="inputEmail3">Name</label>
+                                    <div class="col-sm-10">
+                                        <input ng-model = "name" type="text" class="form-control"
+                                               id="name" placeholder="Sensor name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"
+                                           for="description" >Description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model = "description" class="form-control"
+                                               id="description" placeholder="Description"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"
+                                           for="format" >Format</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model = "format" class="form-control"
+                                               id="dataformat" placeholder="Data format (JSON/XML)"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"
+                                           for="owner" >Owner</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model = "owner" class="form-control"
+                                               id="owner" placeholder="Sensor owner"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"
+                                           for="type" >Type</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model = "type" class="form-control"
+                                               id="type" placeholder="Sensor type"/>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"
+                                           for="city" >City</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control"
+                                               id="city" ng-model="city" placeholder="City"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"
+                                           for="state" >State</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control"
+                                               id="state" ng-model="state" placeholder="state"/>
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" ng-click="addSensor()" class="btn btn-default">Submit</button>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="javascript:void(0);" data-toggle="modal" data-target="#listSensors">
+            <div class="col-xs-12 col-md-6 col-lg-3">
+
+                <div class="panel panel-teal panel-widget">
+                    <div class="row no-padding">
+                        <div class="col-sm-3 col-lg-5 widget-left">
+                            <svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+                        </div>
+
+                        <div class="col-sm-9 col-lg-7 widget-right">
+
+                            <div class="large">List</div>
+                            <div style="font-size: medium;">sensors</div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </a>
+            <div class="modal fade" id="listSensors" role="dialog" ng-controller="listSensors">
+                <!-- Modal content-->
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Subscribe the sensors from the list: </h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Location</th>
+                                    <th>Manage</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr ng-repeat="k in sensorInfo">
+                                    <th scope="row">1</th>
+                                    <td>{{k.name}}</td>
+                                    <td>{{k.type}}</td>
+                                    <td>{{k.city}}</td>
+                                    <td><button class="btn btn-primary" ng-click="activity(k.name,k.status)">{{k.status}}</button></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!--/.row-->
+    </div>
+
+
+
+</div>
+</body>
+
+</html>
